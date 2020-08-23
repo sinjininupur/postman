@@ -1,15 +1,19 @@
 {
-  "name": "spotledemo",
+  "name": "postman-newman",
   "version": "1.0.0",
-  "description": "postman newman test",
+  "description": "",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postmantest": "newman run tests/spotledemo.postman_collection.json -e spotledev.postman_environment.json -d s1.csv --insecure  --reporters html --reporter-html-export reports/report.html"
+    "postmantest": "newman run tests/spotledemo.postman_collection.json -e spotledev.postman_environment.json -d s1.csv --reporters junit,cli,htmlextra  --reporter-htmlextra-export reports/report.html  --reporter-htmlextra-title postmantest"
   },
-  "author": "sinjini",
-  "license": "ISC"
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "newman-reporter-html": "^1.0.5",
+    "newman-reporter-htmlextra": "^1.6.10"
+  }
 }
