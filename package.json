@@ -1,0 +1,15 @@
+{
+  "name": "spotledemo",
+  "version": "1.0.0",
+  "description": "postman newman test",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postmantest": "newman run tests/spotledemo.postman_collection.json -e spotledev.postman_environment.json -d s1.csv --insecure  --reporters html --reporter-html-export reports/report.html"
+  },
+  "author": "sinjini",
+  "license": "ISC"
+}

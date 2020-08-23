@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "319aad9a-cc6f-4616-aafa-2661bdbf0139",
+		"name": "spotledemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getpost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5cdea110-c0a1-465b-ade0-707426f9b630",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"     pm.expect(pm.response.text()).to.include(\"sunt aut facere repellat\");",
+							"});",
+							"",
+							"var schema={",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",",
+							"  \"type\": \"array\",",
+							"  \"items\": [",
+							"    {",
+							"      \"type\": \"object\",",
+							"      \"properties\": {",
+							"        \"userId\": {",
+							"          \"type\": \"integer\"",
+							"        },",
+							"        \"id\": {",
+							"          \"type\": \"integer\"",
+							"        },",
+							"        \"title\": {",
+							"          \"type\": \"string\"",
+							"        },",
+							"        \"body\": {",
+							"          \"type\": \"string\"",
+							"        }",
+							"      },",
+							"      \"required\": [",
+							"        \"userId\",",
+							"        \"id\",",
+							"        \"title\",",
+							"        \"body\"",
+							"      ]",
+							"    }",
+							"  ]",
+							"}",
+							"",
+							"",
+							"var data1 =  pm.response.json();",
+							"pm.test('5. Schema of the main response is valid', function() {",
+							" var result = tv4.validate(data1, schema, false, true);",
+							"  if (result !== true) {",
+							"      console.log('Schema validation failed:', tv4.error);",
+							"                  console.log(tv4.error.dataPath);",
+							"  }",
+							"  pm.expect(result).to.be.true;",
+							"  console.log(JSON.stringify(result));",
+							"    ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				},
+				"description": "get post"
+			},
+			"response": []
+		},
+		{
+			"name": "getpostbyid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc6c023b-05aa-490a-a21a-c7c988d2283d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{postid2}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{postid2}}"
+					]
+				},
+				"description": "get post by id"
+			},
+			"response": []
+		},
+		{
+			"name": "create post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "289b5db7-764d-4ad3-9257-b4b8487b437d",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \n      \"title\": \"{{title2}}\",\n      \"body\": \"{{bodytext2}}\",\n      \"userId\": {{userid2}}\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				},
+				"description": "create post"
+			},
+			"response": []
+		},
+		{
+			"name": "updatepost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0792f6a3-623e-45f8-89b3-60eb65e86c10",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1,\n      \"title\": \"foo\",\n      \"body\": \"bar\",\n      \"userId\": 1\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{postid2}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{postid2}}"
+					]
+				},
+				"description": "update post"
+			},
+			"response": []
+		},
+		{
+			"name": "deletepost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "662b4e1d-9779-4956-9267-decad61ac956",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/5",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"5"
+					]
+				},
+				"description": "delete post"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
